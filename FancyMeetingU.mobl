@@ -1,0 +1,8 @@
+application FancyMeetingU
+
+import mobl::ui::generic
+import model
+
+screen root() {
+	header("FancyMeetingU")
+}

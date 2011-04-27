@@ -1,0 +1,29 @@
+application test
+
+import mobl::test
+import model
+
+testSuite("room", [
+  setUp({
+  }),
+  testCase("a new room has '' for name", {
+  	var aRoom = Room();
+  	assertEqual("", aRoom.name);
+  }),
+  testCase("a new room has null for facilities", {
+  	var aRoom = Room();
+  	assertEqual(null, aRoom.facilities);
+  }),
+  testCase("a room with init has a name, capacity, and empty facilities", {
+  	var aRoom = Room();
+  	aRoom.init("theRoom", 10, "A1");
+  	assertEqual("theRoom", aRoom.name);
+  	assertEqual(10, aRoom.capacity);
+  	assertEqual("A1", aRoom.location);
+  	assertEqual(Map<String,String>(), aRoom.facilities);
+  })
+]);
+
+screen root() {
+  testRunner()
+}

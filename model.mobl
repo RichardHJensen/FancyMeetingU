@@ -1,0 +1,33 @@
+module model
+
+type Building {
+	name   : String
+	location : String
+	function init(name : String, location : String) {
+		this.name = name;
+		this.location = location;
+	}
+}
+
+type Floor {
+	name : String
+	building : Building
+	function init(floorName : String, location : Building) {
+		this.name = floorName;
+		this.building = location;
+	}
+}
+
+entity Room {
+	name : String (searchable)
+	location: String
+	capacity: Num
+	facilities: Map<String, String>
+	floor: Floor
+	function init(name : String, capacity : Num, location : String) {
+		this.name = name;
+		this.capacity = capacity;
+		this.location = location;
+		this.facilities = Map<String, String>();
+	}
+}
