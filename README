@@ -1,0 +1,9 @@
+Program to explore using mobl http://mobl-lang.org
+
+Given a lot of conference rooms on a campus, allow
+a user to pull it up by its name.
+  * Name
+  * Capacity
+  * Location (building, floor, whatever)
+  * Facilities (thinking we can at some point search for rooms that have projectors, wireless internet, etc.)
+
