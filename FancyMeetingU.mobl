@@ -4,5 +4,27 @@ import mobl::ui::generic
 import model
 
 screen root() {
-	header("FancyMeetingU")
+	header("FancyMeetingU") { button("Add", onclick={ addRoom(); }) }
+	group {
+		list(room in Room.all() order by name asc) {
+			item { label(room.name)}
+		}
+	}
+}
+
+screen addRoom() {
+	var newRoom = Room()
+	header("Add a room") {
+
+      backButton()
+      button("Add", onclick={
+        add(newRoom);
+        screen return;
+      })
+    }
+    group {
+      item { textField(newRoom.name, 
+                     placeholder="Room name") }
+  }
+
 }

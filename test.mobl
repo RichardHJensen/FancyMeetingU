@@ -3,6 +3,10 @@ application test
 import mobl::test
 import model
 
+function assertNotEqual(expected: Object, actual: Object) {
+		assert(expected != actual);
+}
+
 testSuite("room", [
   setUp({
   }),
@@ -14,13 +18,22 @@ testSuite("room", [
   	var aRoom = Room();
   	assertEqual(null, aRoom.facilities);
   }),
-  testCase("a room with init has a name, capacity, and empty facilities", {
+  testCase("init has a name capacity and empty facilities", {
   	var aRoom = Room();
   	aRoom.init("theRoom", 10, "A1");
   	assertEqual("theRoom", aRoom.name);
   	assertEqual(10, aRoom.capacity);
   	assertEqual("A1", aRoom.location);
-  	assertEqual(Map<String,String>(), aRoom.facilities);
+  	assertNotEqual(null, aRoom.facilities);
+  	assertEqual(0, aRoom.facilities.keys().length);
+  }),
+  testCase("can add a facility to a room", {
+  	var aRoom = Room();
+  	aRoom.init("myRoom", 10, "3B");
+  	aRoom.facilities.set("projector", "LCD 720x680");
+  	assertEqual(1, aRoom.numFacilities());
+  	var itemValue = aRoom.getFacility("projector");
+  	assertEqual("LCD 720x680", itemValue);
   })
 ]);
 
